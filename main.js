@@ -56,6 +56,9 @@ const checkButtonType = (e) => {
     let number = Number(screen.textContent);
     screen.textContent = -number;
   }
+  if (e.target.classList.contains("decimal")) {
+    screen.textContent += e.target.textContent;
+  }
   if (e.target.classList.contains("addition")) {
     numbers.push(Number(screen.textContent));
     if (operation === "result") {
