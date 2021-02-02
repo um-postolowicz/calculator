@@ -52,6 +52,10 @@ const checkButtonType = (e) => {
     operation = "";
     result = 0;
   }
+  if (e.target.classList.contains("sign")) {
+    let number = Number(screen.textContent);
+    screen.textContent = -number;
+  }
   if (e.target.classList.contains("addition")) {
     numbers.push(Number(screen.textContent));
     if (operation === "result") {
