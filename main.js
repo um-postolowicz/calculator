@@ -16,6 +16,13 @@ const operations = () => {
     result = numbers.reduce((a, b) => a * b);
     return result;
   }
+  if (operation === "subtract") {
+    result = numbers[0];
+    for (i = 1; i < numbers.length; i++) {
+      result -= numbers[i];
+    }
+    return result;
+  }
 };
 
 const checkButtonType = (e) => {
@@ -47,6 +54,14 @@ const checkButtonType = (e) => {
     }
     numbers.push(Number(screen.textContent));
     operation = "multiply";
+    screen.textContent = 0;
+  }
+  if (e.target.classList.contains("subtraction")) {
+    if (operation === "result") {
+      numbers = [];
+    }
+    numbers.push(Number(screen.textContent));
+    operation = "subtract";
     screen.textContent = 0;
   }
   if (e.target.classList.contains("equal")) {
