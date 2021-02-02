@@ -108,6 +108,10 @@ const checkButtonType = (e) => {
     operation = "percent";
     screen.textContent = 0;
   }
+  if (e.target.classList.contains("fraction")) {
+    let number = Number(screen.textContent);
+    screen.textContent = 1 / number;
+  }
   if (e.target.classList.contains("equal")) {
     if (screen.textContent !== "0") numbers.push(Number(screen.textContent));
     operations();
