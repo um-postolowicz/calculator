@@ -31,6 +31,10 @@ const operations = () => {
     result = Math.pow(numbers[0], numbers[1]);
     return result;
   }
+  if (operation === "percent") {
+    result = numbers[0] * (numbers[1] / 100);
+    return result;
+  }
 };
 
 const checkButtonType = (e) => {
@@ -95,6 +99,14 @@ const checkButtonType = (e) => {
   if (e.target.classList.contains("square-root")) {
     let number = Number(screen.textContent);
     screen.textContent = Math.sqrt(number);
+  }
+  if (e.target.classList.contains("percent")) {
+    if (operation === "result") {
+      numbers = [];
+    }
+    numbers.push(Number(screen.textContent));
+    operation = "percent";
+    screen.textContent = 0;
   }
   if (e.target.classList.contains("equal")) {
     if (screen.textContent !== "0") numbers.push(Number(screen.textContent));
