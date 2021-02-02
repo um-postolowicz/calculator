@@ -14,6 +14,7 @@ const operations = () => {
   }
   if (operation === "divide") {
     result = numbers.reduce((a, b) => a / b);
+    if (numbers[1] === 0) result = "No division by 0!";
     return result;
   }
   if (operation === "multiply") {
@@ -55,10 +56,14 @@ const operations = () => {
 const checkButtonType = (e) => {
   if (e.target.classList.contains("digit")) {
     const number = Number(e.target.textContent);
-    if (screen.textContent === "0") {
+    if (screen.textContent === "0" && !operation) {
       screen.textContent = number;
-    } else {
+    } else if (screen.textContent === "0" && operation) {
+      screen.textContent = number;
+    } else if (screen.textContent !== "0" && !operation) {
       screen.textContent += number;
+    } else if (screen.textContent !== "0" && operation) {
+      screen.textContent = number;
     }
   }
   if (e.target.classList.contains("reset")) {
@@ -80,7 +85,7 @@ const checkButtonType = (e) => {
       numbers = [];
     }
     operation = "add";
-    screen.textContent = 0;
+    screen.textContent = numbers[0];
   }
   if (e.target.classList.contains("division")) {
     if (operation === "result") {
@@ -88,7 +93,7 @@ const checkButtonType = (e) => {
     }
     numbers.push(Number(screen.textContent));
     operation = "divide";
-    screen.textContent = 0;
+    screen.textContent = numbers[0];
   }
   if (e.target.classList.contains("multiplication")) {
     if (operation === "result") {
@@ -96,7 +101,7 @@ const checkButtonType = (e) => {
     }
     numbers.push(Number(screen.textContent));
     operation = "multiply";
-    screen.textContent = 0;
+    screen.textContent = numbers[0];
   }
   if (e.target.classList.contains("subtraction")) {
     if (operation === "result") {
@@ -104,7 +109,7 @@ const checkButtonType = (e) => {
     }
     numbers.push(Number(screen.textContent));
     operation = "subtract";
-    screen.textContent = 0;
+    screen.textContent = numbers[0];
   }
   if (e.target.classList.contains("squared")) {
     let number = Number(screen.textContent);
@@ -116,7 +121,7 @@ const checkButtonType = (e) => {
     }
     numbers.push(Number(screen.textContent));
     operation = "power";
-    screen.textContent = 0;
+    screen.textContent = numbers[0];
   }
   if (e.target.classList.contains("square-root")) {
     let number = Number(screen.textContent);
@@ -128,7 +133,7 @@ const checkButtonType = (e) => {
       numbers = [];
     }
     operation = "root";
-    screen.textContent = 0;
+    screen.textContent = numbers[0];
   }
   if (e.target.classList.contains("percent")) {
     if (operation === "result") {
@@ -136,16 +141,16 @@ const checkButtonType = (e) => {
     }
     numbers.push(Number(screen.textContent));
     operation = "percent";
-    screen.textContent = 0;
+    screen.textContent = numbers[0];
   }
   if (e.target.classList.contains("fraction")) {
     let number = Number(screen.textContent);
     screen.textContent = 1 / number;
   }
   if (e.target.classList.contains("equal")) {
-    if (screen.textContent !== "0") numbers.push(Number(screen.textContent));
+    if (screen.textContent !== "0" || (screen.textContent === "0" && operation))
+      numbers.push(Number(screen.textContent));
     operations();
-    console.log(numbers);
     screen.textContent = result;
     operation = "result";
   }
