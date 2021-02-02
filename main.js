@@ -12,6 +12,10 @@ const operations = () => {
     });
     return result;
   }
+  if (operation === "divide") {
+    result = numbers.reduce((a, b) => a / b);
+    return result;
+  }
   if (operation === "multiply") {
     result = numbers.reduce((a, b) => a * b);
     return result;
@@ -46,6 +50,14 @@ const checkButtonType = (e) => {
       numbers = [];
     }
     operation = "add";
+    screen.textContent = 0;
+  }
+  if (e.target.classList.contains("division")) {
+    if (operation === "result") {
+      numbers = [];
+    }
+    numbers.push(Number(screen.textContent));
+    operation = "divide";
     screen.textContent = 0;
   }
   if (e.target.classList.contains("multiplication")) {
