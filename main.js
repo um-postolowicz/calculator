@@ -7,9 +7,13 @@ let numbers = [];
 
 const operations = () => {
   if (operation === "add") {
-    for (i = 0; i < numbers.length; i++) {
-      result += numbers[i];
-    }
+    numbers.forEach((number) => {
+      result += number;
+    });
+    return result;
+  }
+  if (operation === "multiply") {
+    result = numbers.reduce((a, b) => a * b);
     return result;
   }
 };
@@ -27,6 +31,7 @@ const checkButtonType = (e) => {
     screen.textContent = "0";
     numbers = [];
     operation = "";
+    result = 0;
   }
   if (e.target.classList.contains("addition")) {
     numbers.push(Number(screen.textContent));
@@ -34,6 +39,14 @@ const checkButtonType = (e) => {
       numbers = [];
     }
     operation = "add";
+    screen.textContent = 0;
+  }
+  if (e.target.classList.contains("multiplication")) {
+    if (operation === "result") {
+      numbers = [];
+    }
+    numbers.push(Number(screen.textContent));
+    operation = "multiply";
     screen.textContent = 0;
   }
   if (e.target.classList.contains("equal")) {
