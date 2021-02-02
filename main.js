@@ -31,6 +31,21 @@ const operations = () => {
     result = Math.pow(numbers[0], numbers[1]);
     return result;
   }
+  if (operation === "root") {
+    if (numbers[0] < 0 && numbers[1] % 2 !== 1) {
+      result = "No solution!";
+      return result;
+    } else if (numbers[0] > 0 && numbers[1] % 2 !== 1) {
+      const number = Math.pow(numbers[0], 1 / numbers[1]);
+      result = number + " or " + -number;
+      return result;
+    } else {
+      result =
+        (numbers[0] < 0 ? -1 : 1) *
+        Math.pow(Math.abs(numbers[0]), 1 / numbers[1]);
+      return result;
+    }
+  }
   if (operation === "percent") {
     result = numbers[0] * (numbers[1] / 100);
     return result;
@@ -106,6 +121,14 @@ const checkButtonType = (e) => {
   if (e.target.classList.contains("square-root")) {
     let number = Number(screen.textContent);
     screen.textContent = Math.sqrt(number);
+  }
+  if (e.target.classList.contains("root")) {
+    numbers.push(Number(screen.textContent));
+    if (operation === "result") {
+      numbers = [];
+    }
+    operation = "root";
+    screen.textContent = 0;
   }
   if (e.target.classList.contains("percent")) {
     if (operation === "result") {
