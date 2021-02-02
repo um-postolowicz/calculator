@@ -76,6 +76,10 @@ const checkButtonType = (e) => {
     operation = "subtract";
     screen.textContent = 0;
   }
+  if (e.target.classList.contains("squared")) {
+    let number = Number(screen.textContent);
+    screen.textContent = number * number;
+  }
   if (e.target.classList.contains("equal")) {
     if (screen.textContent !== "0") numbers.push(Number(screen.textContent));
     operations();
