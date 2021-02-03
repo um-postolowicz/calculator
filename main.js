@@ -1,10 +1,11 @@
 const buttons = [...document.querySelectorAll(".button")];
 const screen = document.querySelector(".screen");
 
-let result = 0;
 let emptyScreen = false;
-let operation = "";
 let numbers = [];
+let operation = "";
+let operationNumber = 0;
+let result = 0;
 
 const operations = () => {
   if (operation === "add") {
@@ -65,10 +66,12 @@ const handleOperation = (operationType) => {
     numbers = [];
     result = 0;
   }
+  if (operationNumber === 1) return;
   console.log("op");
   numbers.push(Number(screen.textContent));
   operation = operationType;
   screen.textContent = numbers[0];
+  operationNumber = 1;
 };
 
 const checkButtonType = (e) => {
@@ -144,6 +147,7 @@ const checkButtonType = (e) => {
     console.log(`Equal: ${numbers}`);
     screen.textContent = result;
     operation = "result";
+    operationNumber = 0;
   }
 };
 
