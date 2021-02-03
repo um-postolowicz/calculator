@@ -6,21 +6,52 @@
 
 html {
   font-size: 10px;
+  font-family: "Source Code Pro", monospace;
+}
+
+body {
+  position: relative;
+}
+
+.title {
+  margin-top: 20px;
+  text-align: center;
+  font-size: 2.5rem;
 }
 
 .calculator {
-  height: 80vh;
-  width: 80vw;
-  margin: 20px auto;
+  position: absolute;
+  top: 70px;
+  left: 50%;
+  transform: translateX(-50%);
+  height: 75vh;
+  width: 90vw;
+  background-image: linear-gradient(to top, #df89b5 0%, #bfd9fe 100%);
+  border-radius: 20px;
 }
 
 .screen {
-  background-color: blue;
   width: 80%;
   height: 20%;
   margin: 20px auto;
+  padding-right: 10px;
   color: white;
-  font-size: 4rem;
+  font-size: 3.5rem;
+  background-color: #000;
+  text-align: right;
+  line-height: 2.4;
+}
+
+.noSolution {
+  padding-right: 0;
+  line-height: 4;
+  text-align: center;
+  font-size: 2rem;
+}
+
+.twoSolutions {
+  font-size: 2.5rem;
+  line-height: 3.2;
 }
 
 .buttons {
@@ -32,15 +63,36 @@ html {
   justify-items: center;
   align-items: center;
   height: 50vh;
-  background-color: darkmagenta;
-  font-size: 2rem;
+  width: 90%;
+  margin: 0 auto;
+  font-size: 1.8rem;
+}
+
+.reset {
+  font-size: 1.6rem;
+  text-transform: uppercase;
 }
 
 .button {
   display: block;
-  background-color: cornsilk;
   width: 90%;
   height: 90%;
+  border: 2px solid white;
+  border-radius: 7px;
+  box-shadow: 0 0 3px 1px #eee;
   text-align: center;
   line-height: 2;
+  cursor: pointer;
+}
+
+.button:active {
+  background-color: white;
+}
+
+.fraction {
+  font-size: 1.5rem;
+}
+
+.power-number {
+  font-size: 1.2rem;
 }

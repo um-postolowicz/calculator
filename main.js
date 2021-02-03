@@ -2,6 +2,7 @@ const buttons = [...document.querySelectorAll(".button")];
 const screen = document.querySelector(".screen");
 
 let result = 0;
+let emptyScreen = false;
 let operation = "";
 let numbers = [];
 
@@ -14,7 +15,10 @@ const operations = () => {
   }
   if (operation === "divide") {
     result = numbers.reduce((a, b) => a / b);
-    if (numbers[1] === 0) result = "No division by 0!";
+    if (numbers[1] === 0) {
+      result = "No division by 0!";
+      screen.classList.add("noSolution");
+    }
     return result;
   }
   if (operation === "multiply") {
@@ -35,10 +39,12 @@ const operations = () => {
   if (operation === "root") {
     if (numbers[0] < 0 && numbers[1] % 2 !== 1) {
       result = "No solution!";
+      screen.classList.add("noSolution");
       return result;
     } else if (numbers[0] > 0 && numbers[1] % 2 !== 1) {
       const number = Math.pow(numbers[0], 1 / numbers[1]);
       result = number + " or " + -number;
+      screen.classList.add("twoSolutions");
       return result;
     } else {
       result =
@@ -54,41 +60,44 @@ const operations = () => {
 };
 
 const handleOperation = (operationType) => {
+  emptyScreen = true;
   if (operation === "result") {
     numbers = [];
     result = 0;
   }
-  console.log(`Add: ${numbers}`);
+  console.log("op");
   numbers.push(Number(screen.textContent));
   operation = operationType;
   screen.textContent = numbers[0];
 };
 
 const checkButtonType = (e) => {
-  if (e.target.classList.contains("digit")) {
+  if (
+    e.target.classList.contains("digit") ||
+    e.target.classList.contains("decimal")
+  ) {
     const number = Number(e.target.textContent);
-    if (screen.textContent === "0" && !operation) {
-      screen.textContent = number;
-    } else if (screen.textContent === "0" && operation) {
-      screen.textContent = number;
-    } else if (screen.textContent !== "0" && !operation) {
+    if (screen.textContent !== "0" && !emptyScreen) {
       screen.textContent += number;
-    } else if (screen.textContent !== "0" && operation) {
+    } else {
       screen.textContent = number;
+      if (e.target.classList.contains("decimal")) {
+        screen.textContent = 0 + e.target.textContent;
+      }
     }
+    emptyScreen = false;
   }
   if (e.target.classList.contains("reset")) {
     screen.textContent = "0";
     numbers = [];
     operation = "";
     result = 0;
+    screen.classList.remove("noSolution");
+    screen.classList.remove("twoSolutions");
   }
   if (e.target.classList.contains("sign")) {
     let number = Number(screen.textContent);
     screen.textContent = -number;
-  }
-  if (e.target.classList.contains("decimal")) {
-    screen.textContent += e.target.textContent;
   }
   if (e.target.classList.contains("addition")) {
     handleOperation("add");
@@ -111,7 +120,12 @@ const checkButtonType = (e) => {
   }
   if (e.target.classList.contains("square-root")) {
     let number = Number(screen.textContent);
-    screen.textContent = Math.sqrt(number);
+    if (number < 0) {
+      screen.textContent = "No solution!";
+      screen.classList.add("noSolution");
+    } else {
+      screen.textContent = Math.sqrt(number);
+    }
   }
   if (e.target.classList.contains("root")) {
     handleOperation("root");

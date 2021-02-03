@@ -4,22 +4,28 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>The Calculator</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@300;400;700&display=swap"
+      rel="stylesheet"
+    />
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
+    <h1 class="title">The Calculator</h1>
     <div class="calculator">
       <div class="screen">0</div>
       <div class="buttons">
-        <span class="squared button">x<span class="power-number">2</span></span>
-        <span class="power button">x<span class="power-number">y</span></span>
+        <span class="squared button">x<sup class="power-number">2</sup></span>
+        <span class="power button">x<sup class="power-number">y</sup></span>
         <span class="square-root button"><span>&radic;</span>x</span>
         <span class="reset button">reset</span>
         <span class="percent button">%</span>
         <span class="fraction button"
-          ><span class="power-number">1</span>/x</span
+          ><sup class="power-number">1</sup>/<sub>x</sub></span
         >
         <span class="root button"
-          ><span class="power-number">y</span><span>&radic;</span>x</span
+          ><sup class="power-number">y</sup><span>&radic;</span>x</span
         >
         <span class="division button">/</span>
         <span class="digit button">7</span>
