@@ -366,6 +366,9 @@
   .buttons {
     font-size: 2.5rem;
   }
+  .button:hover {
+    background-color: white;
+  }
   .reset {
     font-size: 2.2rem;
     line-height: 2.5;

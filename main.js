@@ -67,7 +67,6 @@ const handleOperation = (operationType) => {
     result = 0;
   }
   if (operationNumber === 1) return;
-  console.log("op");
   numbers.push(Number(screen.textContent));
   operation = operationType;
   screen.textContent = numbers[0];
