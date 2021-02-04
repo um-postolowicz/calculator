@@ -85,7 +85,7 @@ const checkButtonType = (e) => {
     } else {
       screen.textContent = number;
       if (e.target.classList.contains("decimal")) {
-        screen.textContent = 0 + e.target.textContent;
+        screen.textContent = "0" + `${e.target.textContent}`;
       }
     }
     emptyScreen = false;

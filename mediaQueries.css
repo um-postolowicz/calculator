@@ -1,0 +1,377 @@
+@media (min-width: 360px) and (orientation: portrait) {
+  .title {
+    font-size: 3rem;
+  }
+}
+
+@media (min-width: 360px) and (min-height: 720px) and (orientation: portrait) {
+  .calculator {
+    top: 130px;
+    height: 66vh;
+  }
+  .title {
+    font-size: 4rem;
+    margin: 30px 40px 0;
+  }
+  .screen {
+    line-height: 2.8;
+  }
+  .noSolution {
+    line-height: 4.5;
+  }
+  .buttons {
+    height: 45vh;
+    font-size: 2.3rem;
+  }
+  .reset {
+    line-height: 2.5;
+  }
+  .power-number {
+    font-size: 1.5rem;
+  }
+  sub {
+    font-size: 1.5rem;
+  }
+}
+
+@media (min-width: 567px) and (orientation: landscape) {
+  .title {
+    display: none;
+  }
+  .calculator {
+    top: 15px;
+    height: 90vh;
+  }
+  .screen {
+    height: 22%;
+    font-size: 3rem;
+    line-height: 2.2;
+  }
+  .buttons {
+    grid-template-columns: repeat(6, 1fr);
+    grid-template-rows: repeat(4, 1fr);
+  }
+  #one {
+    grid-column: var(--first);
+    grid-row: var(--third);
+  }
+  #two {
+    grid-column: var(--second);
+    grid-row: var(--third);
+  }
+  #three {
+    grid-column: var(--third);
+    grid-row: var(--third);
+  }
+  #four {
+    grid-column: var(--first);
+    grid-row: var(--second);
+  }
+  #five {
+    grid-column: var(--second);
+    grid-row: var(--second);
+  }
+  #six {
+    grid-column: var(--third);
+    grid-row: var(--second);
+  }
+  #seven {
+    grid-column: var(--first);
+    grid-row: var(--first);
+  }
+  #eight {
+    grid-column: var(--second);
+    grid-row: var(--first);
+  }
+  #nine {
+    grid-column: var(--third);
+    grid-row: var(--first);
+  }
+  #plusMinus {
+    grid-column: var(--first);
+    grid-row: var(--fourth);
+  }
+  #zero {
+    grid-column: var(--second);
+    grid-row: var(--fourth);
+  }
+  #dot {
+    grid-column: var(--third);
+    grid-row: var(--fourth);
+  }
+  .reset {
+    grid-column: var(--sixth);
+    grid-row: var(--first);
+  }
+  .addition {
+    grid-column: var(--sixth);
+    grid-row: var(--third);
+  }
+  .subtraction {
+    grid-column: var(--sixth);
+    grid-row: var(--second);
+  }
+  .root {
+    grid-column: var(--fifth);
+    grid-row: var(--second);
+  }
+}
+
+@media (min-width: 720px) and (orientation: portrait) {
+  .calculator {
+    width: 65vw;
+    height: 70vh;
+  }
+  .screen {
+    margin: 40px auto;
+    font-size: 4rem;
+    line-height: 3.5;
+  }
+  .noSolution {
+    font-size: 3rem;
+    line-height: 4.5;
+  }
+  .buttons {
+    font-size: 2.5rem;
+  }
+  .button {
+    line-height: 2.5;
+  }
+  .reset {
+    font-size: 2rem;
+    line-height: 3;
+  }
+  .power-number,
+  sub {
+    font-size: 2rem;
+  }
+}
+
+@media (min-width: 720px) and (orientation: landscape) {
+  .title {
+    display: block;
+  }
+  .calculator {
+    top: 45px;
+    height: 80vh;
+  }
+  .screen {
+    line-height: 2.4;
+  }
+  .reset {
+    line-height: 2.3;
+  }
+}
+
+@media (min-width: 900px) and (orientation: portrait) {
+  .title {
+    margin-top: 50px;
+    font-size: 4.5rem;
+  }
+  .calculator {
+    top: 160px;
+    height: 66vh;
+  }
+  .screen {
+    font-size: 4.5rem;
+    line-height: 4;
+  }
+  .noSolution {
+    font-size: 4rem;
+  }
+  .buttons {
+    font-size: 3rem;
+  }
+  .button {
+    line-height: 3;
+  }
+  .reset {
+    font-size: 3rem;
+  }
+  .power-number,
+  sub {
+    font-size: 2.5rem;
+  }
+}
+
+@media (min-width: 1024px) and (orientation: landscape) {
+  .title {
+    font-size: 4rem;
+  }
+  .calculator {
+    top: 80px;
+    width: 40vw;
+    height: 76vh;
+  }
+  .screen {
+    font-size: 4rem;
+    line-height: 3;
+  }
+  .noSolution {
+    font-size: 3rem;
+    line-height: 4;
+  }
+  .buttons {
+    font-size: 2.3rem;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(6, 1fr);
+  }
+  .button {
+    line-height: 2.2;
+  }
+  .power-number,
+  sub {
+    font-size: 1.8rem;
+  }
+  #plusMinus,
+  #zero,
+  #dot {
+    grid-row: var(--sixth);
+  }
+  #one,
+  #two,
+  #three {
+    grid-row: var(--fifth);
+  }
+  #four,
+  #five,
+  #six {
+    grid-row: var(--fourth);
+  }
+  #seven,
+  #eight,
+  #nine {
+    grid-row: var(--third);
+  }
+  .reset {
+    font-size: 2rem;
+    grid-column: var(--fourth);
+  }
+  .equal {
+    grid-column: var(--fourth);
+    grid-row: var(--sixth);
+  }
+  .percent {
+    grid-column: var(--first);
+    grid-row: var(--second);
+  }
+  .fraction {
+    grid-column: var(--second);
+    grid-row: var(--second);
+  }
+  .root {
+    grid-column: var(--third);
+    grid-row: var(--second);
+  }
+  .addition {
+    grid-column: var(--fourth);
+    grid-row: var(--fifth);
+  }
+  .subtraction {
+    grid-column: var(--fourth);
+    grid-row: var(--fourth);
+  }
+  .multiplication {
+    grid-column: var(--fourth);
+    grid-row: var(--third);
+  }
+  .division {
+    grid-column: var(--fourth);
+    grid-row: var(--second);
+  }
+}
+@media (min-width: 1024px) and (orientation: portrait) {
+  .title {
+    margin-top: 50px;
+    letter-spacing: 3px;
+    font-size: 5rem;
+  }
+  .calculator {
+    top: 150px;
+    height: 72vh;
+    width: 55vw;
+  }
+  .screen {
+    font-size: 5rem;
+  }
+  .noSolution {
+    font-size: 4rem;
+  }
+  .buttons {
+    font-size: 3.3rem;
+  }
+  .power-number,
+  sub {
+    font-size: 2.6rem;
+  }
+  .reset {
+    font-size: 2.5rem;
+  }
+}
+@media (min-width: 1280px) and (orientation: landscape) {
+  .calculator {
+    width: 30vw;
+  }
+  .noSolution {
+    font-size: 2.5rem;
+  }
+  .buttons {
+    font-size: 2rem;
+  }
+}
+@media (min-width: 1366px) and (orientation: landscape) {
+  .calculator {
+    width: 30vw;
+  }
+}
+@media (min-width: 1366px) and (min-height: 1024px) and (orientation: landscape) {
+  .title {
+    margin-top: 50px;
+  }
+  .calculator {
+    top: 110px;
+    width: 35vw;
+  }
+  .screen {
+    margin-top: 40px;
+    font-size: 5rem;
+    line-height: 3.5;
+  }
+  .noSolution {
+    line-height: 1.5;
+    font-size: 4.5rem;
+    padding: 10px 10px;
+  }
+  .buttons {
+    font-size: 3rem;
+  }
+  .power-number,
+  sub {
+    font-size: 2.3rem;
+  }
+  .reset {
+    font-size: 2.5rem;
+    line-height: 2.5;
+  }
+}
+
+@media (min-width: 1440px) and (orientation: landscape) {
+  .calculator {
+    top: 100px;
+  }
+  .screen {
+    margin-top: 30px;
+    line-height: 3.5;
+  }
+  .buttons {
+    font-size: 2.5rem;
+  }
+  .reset {
+    font-size: 2.2rem;
+    line-height: 2.5;
+  }
+  .power-number,
+  sub {
+    font-size: 2.2rem;
+  }
+}

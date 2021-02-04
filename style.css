@@ -7,6 +7,12 @@
 html {
   font-size: 10px;
   font-family: "Source Code Pro", monospace;
+  --first: 1/1;
+  --second: 2/2;
+  --third: 3/3;
+  --fourth: 4/4;
+  --fifth: 5/5;
+  --sixth: 6/6;
 }
 
 body {
@@ -83,6 +89,11 @@ body {
   text-align: center;
   line-height: 2;
   cursor: pointer;
+  transition: 0.2s;
+}
+
+.button:hover {
+  background-color: white;
 }
 
 .button:active {

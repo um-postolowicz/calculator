@@ -4,12 +4,14 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>The Calculator</title>
+    <link rel="shortcut icon" type="image/x-icon" href="/favicon/favicon.ico" />
     <link rel="preconnect" href="https://fonts.gstatic.com" />
     <link
       href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@300;400;700&display=swap"
       rel="stylesheet"
     />
     <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="mediaQueries.css" />
   </head>
   <body>
     <h1 class="title">The Calculator</h1>
@@ -28,21 +30,21 @@
           ><sup class="power-number">y</sup><span>&radic;</span>x</span
         >
         <span class="division button">/</span>
-        <span class="digit button">7</span>
-        <span class="digit button">8</span>
-        <span class="digit button">9</span>
+        <span class="digit button" id="seven">7</span>
+        <span class="digit button" id="eight">8</span>
+        <span class="digit button" id="nine">9</span>
         <span class="multiplication button">x</span>
-        <span class="digit button">4</span>
-        <span class="digit button">5</span>
-        <span class="digit button">6</span>
+        <span class="digit button" id="four">4</span>
+        <span class="digit button" id="five">5</span>
+        <span class="digit button" id="six">6</span>
         <span class="subtraction button">-</span>
-        <span class="digit button">1</span>
-        <span class="digit button">2</span>
-        <span class="digit button">3</span>
+        <span class="digit button" id="one">1</span>
+        <span class="digit button" id="two">2</span>
+        <span class="digit button" id="three">3</span>
         <span class="addition button">+</span>
-        <span class="sign button">+/-</span>
-        <span class="digit button">0</span>
-        <span class="decimal button">.</span>
+        <span class="sign button" id="plusMinus">+/-</span>
+        <span class="digit button" id="zero">0</span>
+        <span class="decimal button" id="dot">.</span>
         <span class="equal button">=</span>
       </div>
     </div>
