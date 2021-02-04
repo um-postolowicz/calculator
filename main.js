@@ -44,7 +44,7 @@ const operations = () => {
       return result;
     } else if (numbers[0] > 0 && numbers[1] % 2 !== 1) {
       const number = Math.pow(numbers[0], 1 / numbers[1]);
-      result = number + " or " + -number;
+      result = number.toPrecision(2) + " or " + -number.toPrecision(2);
       screen.classList.add("twoSolutions");
       return result;
     } else {
@@ -67,7 +67,15 @@ const handleOperation = (operationType) => {
     result = 0;
   }
   if (operationNumber === 1) return;
-  numbers.push(Number(screen.textContent));
+  if (screen.classList.contains("twoSolutions")) {
+    const screenText = screen.textContent;
+    const index = screenText.indexOf(" o");
+    const positiveResult = screenText.substr(0, index);
+    numbers.push(Number(positiveResult));
+    screen.classList.remove("twoSolutions");
+  } else {
+    numbers.push(Number(screen.textContent));
+  }
   operation = operationType;
   screen.textContent = numbers[0];
   operationNumber = 1;
@@ -78,9 +86,13 @@ const checkButtonType = (e) => {
     e.target.classList.contains("digit") ||
     e.target.classList.contains("decimal")
   ) {
-    const number = Number(e.target.textContent);
+    const number = e.target.textContent;
     if (screen.textContent !== "0" && !emptyScreen) {
       screen.textContent += number;
+      if (screen.classList.contains("noSolution")) {
+        screen.textContent = number;
+        screen.classList.remove("noSolution");
+      }
     } else {
       screen.textContent = number;
       if (e.target.classList.contains("decimal")) {
@@ -143,10 +155,16 @@ const checkButtonType = (e) => {
     if (screen.textContent !== "0" || (screen.textContent === "0" && operation))
       numbers.push(Number(screen.textContent));
     operations();
-    console.log(`Equal: ${numbers}`);
-    screen.textContent = result;
-    operation = "result";
     operationNumber = 0;
+    if (
+      screen.classList.contains("twoSolutions") ||
+      screen.classList.contains("noSolution")
+    ) {
+      screen.textContent = result;
+    } else {
+      screen.textContent = result.toPrecision(4);
+    }
+    operation = "result";
   }
 };
 
