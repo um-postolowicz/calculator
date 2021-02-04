@@ -8,56 +8,101 @@ let operationNumber = 0;
 let result = 0;
 
 const operations = () => {
-  if (operation === "add") {
-    numbers.forEach((number) => {
-      result += number;
-    });
-    return result;
-  }
-  if (operation === "divide") {
-    result = numbers.reduce((a, b) => a / b);
-    if (numbers[1] === 0) {
-      result = "No division by 0!";
-      screen.classList.add("noSolution");
-    }
-    return result;
-  }
-  if (operation === "multiply") {
-    result = numbers.reduce((a, b) => a * b);
-    return result;
-  }
-  if (operation === "subtract") {
-    result = numbers[0];
-    for (i = 1; i < numbers.length; i++) {
-      result -= numbers[i];
-    }
-    return result;
-  }
-  if (operation === "power") {
-    result = Math.pow(numbers[0], numbers[1]);
-    return result;
-  }
-  if (operation === "root") {
-    if (numbers[0] < 0 && numbers[1] % 2 !== 1) {
-      result = "No solution!";
-      screen.classList.add("noSolution");
+  switch (operation) {
+    case "add":
+      numbers.forEach((number) => {
+        result += number;
+      });
       return result;
-    } else if (numbers[0] > 0 && numbers[1] % 2 !== 1) {
-      const number = Math.pow(numbers[0], 1 / numbers[1]);
-      result = number.toPrecision(2) + " or " + -number.toPrecision(2);
-      screen.classList.add("twoSolutions");
+    case "divide":
+      result = numbers.reduce((a, b) => a / b);
+      if (numbers[1] === 0) {
+        result = "No division by 0!";
+        screen.classList.add("noSolution");
+      }
       return result;
-    } else {
-      result =
-        (numbers[0] < 0 ? -1 : 1) *
-        Math.pow(Math.abs(numbers[0]), 1 / numbers[1]);
+    case "multiply":
+      result = numbers.reduce((a, b) => a * b);
       return result;
-    }
+    case "subtract":
+      result = numbers[0];
+      for (i = 1; i < numbers.length; i++) {
+        result -= numbers[i];
+      }
+      return result;
+    case "power":
+      result = Math.pow(numbers[0], numbers[1]);
+      return result;
+    case "root":
+      if (numbers[0] < 0 && numbers[1] % 2 !== 1) {
+        result = "No solution!";
+        screen.classList.add("noSolution");
+        return result;
+      } else if (numbers[0] > 0 && numbers[1] % 2 !== 1) {
+        const number = Math.pow(numbers[0], 1 / numbers[1]);
+        result = number.toPrecision(2) + " or " + -number.toPrecision(2);
+        screen.classList.add("twoSolutions");
+        return result;
+      } else {
+        result =
+          (numbers[0] < 0 ? -1 : 1) *
+          Math.pow(Math.abs(numbers[0]), 1 / numbers[1]);
+        return result;
+      }
+    case "percent":
+      result = numbers[1] * (numbers[0] / 100);
+      return result;
   }
-  if (operation === "percent") {
-    result = numbers[1] * (numbers[0] / 100);
-    return result;
-  }
+  // if (operation === "add") {
+  //   numbers.forEach((number) => {
+  //     result += number;
+  //   });
+  //   return result;
+  // }
+  // if (operation === "divide") {
+  //   result = numbers.reduce((a, b) => a / b);
+  //   if (numbers[1] === 0) {
+  //     result = "No division by 0!";
+  //     screen.classList.add("noSolution");
+  //   }
+  //   return result;
+  // }
+  // if (operation === "multiply") {
+  //   result = numbers.reduce((a, b) => a * b);
+  //   return result;
+  // }
+  // if (operation === "subtract") {
+  //   result = numbers[0];
+  //   for (i = 1; i < numbers.length; i++) {
+  //     result -= numbers[i];
+  //   }
+  //   return result;
+  // }
+  // if (operation === "power") {
+  //   result = Math.pow(numbers[0], numbers[1]);
+  //   return result;
+  // }
+  // if (operation === "root") {
+  //   if (numbers[0] < 0 && numbers[1] % 2 !== 1) {
+  //     result = "No solution!";
+  //     screen.classList.add("noSolution");
+  //     return result;
+  //   } else if (numbers[0] > 0 && numbers[1] % 2 !== 1) {
+  //     const number = Math.pow(numbers[0], 1 / numbers[1]);
+  //     result = number.toPrecision(2) + " or " + -number.toPrecision(2);
+  //     screen.classList.add("twoSolutions");
+  //     return result;
+  //   } else {
+  //     result =
+  //       (numbers[0] < 0 ? -1 : 1) *
+  //       Math.pow(Math.abs(numbers[0]), 1 / numbers[1]);
+  //     return result;
+  //   }
+  // }
+  // if (operation === "percent") {
+  //   result = numbers[1] * (numbers[0] / 100);
+  //   return result;
+  // }
 };
 
 const handleOperation = (operationType) => {
@@ -127,7 +172,7 @@ const checkButtonType = (e) => {
   }
   if (e.target.classList.contains("squared")) {
     let number = Number(screen.textContent);
-    screen.textContent = number * number;
+    screen.textContent = (number * number).toPrecision(2);
   }
   if (e.target.classList.contains("power")) {
     handleOperation("power");
@@ -138,7 +183,7 @@ const checkButtonType = (e) => {
       screen.textContent = "No solution!";
       screen.classList.add("noSolution");
     } else {
-      screen.textContent = Math.sqrt(number);
+      screen.textContent = Math.sqrt(number).toPrecision(2);
     }
   }
   if (e.target.classList.contains("root")) {
@@ -149,7 +194,7 @@ const checkButtonType = (e) => {
   }
   if (e.target.classList.contains("fraction")) {
     let number = Number(screen.textContent);
-    screen.textContent = 1 / number;
+    screen.textContent = (1 / number).toPrecision(2);
   }
   if (e.target.classList.contains("equal")) {
     if (screen.textContent !== "0" || (screen.textContent === "0" && operation))
@@ -162,7 +207,7 @@ const checkButtonType = (e) => {
     ) {
       screen.textContent = result;
     } else {
-      screen.textContent = result.toPrecision(4);
+      screen.textContent = result.toPrecision(2);
     }
     operation = "result";
   }
