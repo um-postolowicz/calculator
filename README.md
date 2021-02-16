@@ -1,6 +1,7 @@
 # The Calculator
-Visit the site here: https://calculator-ump.herokuapp.com
 A simple calculator with standard operations like addition, subtraction, multiplication and division. There are also a little more advanced operations like roots (square and others), powers (square and others), percents and reversing numbers.
+
+Visit the site here: https://calculator-ump.herokuapp.com
 
 ## How does it work?
 ### Standard operations
